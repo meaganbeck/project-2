@@ -28,12 +28,12 @@ debug = config["SERVER"]["DEBUG"]
 
 @app.route("/<path:request>") #check name below?
 def hello(request):
-    path = '/project-2/web/pages/'# + request
+    path = 'pages/' + request
     filename = request
     if len(request) > 1:
         if ".." in request or "~" in request:
             abort(403)
-        elif os.path.isfile(request):
+        elif os.path.isfile(path):
              return send_from_directory('pages/', request), 200
             #return send_from_directory('pages/', 'trivia.html')
         else:
