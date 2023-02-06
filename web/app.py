@@ -35,7 +35,6 @@ def hello(request):
             abort(403)
         elif os.path.isfile(path):
              return send_from_directory('pages/', request), 200
-            #return send_from_directory('pages/', 'trivia.html')
         else:
             abort(404)
 
@@ -48,4 +47,5 @@ def dne(e):
     return send_from_directory('pages/', '404.html'), 404
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port = 5001)
+    #app.run(debug = True, host =  '0.0.0.0', port = 5001)
+    app.run(debug = config["SERVER"]["DEBUG"], host='0.0.0.0', port = config["SERVER"]["PORT"])
